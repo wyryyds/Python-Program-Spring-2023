@@ -1,0 +1,3 @@
+# 使用Python制作的简单Word工具
+基于pywin32与tkinter制作的Word工具，同时也是个人期末大作业
+
