@@ -36,8 +36,8 @@ class WordConfig:
             word = self._word
             doc = word.Documents.Open(filepath)
             count = doc.ComputeStatistics(2)  # 2 表示统计页面数量
-            doc.Close()
-            word.Quit()
+            # doc.Close()
+            # word.Quit()
             return count
         except Exception as e:
             print("Error:", e)
