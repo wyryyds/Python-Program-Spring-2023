@@ -1,5 +1,6 @@
 import os
 import win32com.client
+from tkinter import filedialog
 
 
 class WordConfig:
@@ -14,31 +15,32 @@ class WordConfig:
     def get_word_file_path(self):
         return self._word_file_path
 
-    def word_2_pdf(self, input_file, output_file):
+    def open_file(self):
+        file_path = filedialog.askopenfilename()
+        if file_path:
+            self._word_file_path = file_path
+            if os.path.isfile(file_path):
+                os.startfile(file_path)
+
+    def word_2_pdf(self):
+        output_file = filedialog.asksaveasfilename(defaultextension=".pdf")
         # 创建 Word 应用程序对象
         word = self._word
         word.Visible = False
 
         # 打开输入的 Word 文档
-        doc = word.Documents.Open(input_file)
+        doc = word.Documents.Open(os.path.abspath(self._word_file_path))
 
         # 将 Word 文档保存为 PDF
-        doc.SaveAs(output_file, FileFormat=17)
+        doc.SaveAs(os.path.abspath(output_file), FileFormat=17)
 
         print('已将word文档转为pdf文档')
 
-        # 关闭 Word 文档和应用程序
-        # doc.Close()
-        # word.Quit()
-
-    def get_word_pages_count(self, filepath):
+    def get_word_pages_count(self):
         try:
             word = self._word
-            doc = word.Documents.Open(filepath)
+            doc = word.Documents.Open(os.path.abspath(self._word_file_path))
             count = doc.ComputeStatistics(2)  # 2 表示统计页面数量
-            # doc.Close()
-            # word.Quit()
             return count
         except Exception as e:
             print("Error:", e)
-

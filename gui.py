@@ -154,7 +154,7 @@ class Gui:
         self.new_top_level('请先选择一个文档')
 
     def set_load_file_btn(self, func):
-        self.load_file_btn.bind('<Button-1>', func)
+        self.load_file_btn.bind('<Button-1>', lambda event: func())
 
     def set_word_2_pdf_btn(self, func):
         self.word_2_pdf_btn.bind('<Button-1>', func)
