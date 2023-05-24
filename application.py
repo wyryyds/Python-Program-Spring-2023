@@ -1,10 +1,10 @@
-from window import Window
 from word_config import WordConfig
+from gui import Gui
 
 
 class Application:
     def __init__(self):
-        self._window = Window()
+        self._window = Gui()
         self._word_config = WordConfig()
         self.window_bind_func()
 
@@ -23,8 +23,8 @@ class Application:
             count = word_config.get_word_pages_count(input_path)
             window.new_top_level('该word文档的页数为：{}'.format(count))
         # 初始化 word 2 pdf 功能的按钮
-        window.set_word_2_pdf_btn(btn1_callback)
-        window.set_count_pages_btn(btn2_callback)
+        # window.set_word_2_pdf_btn(btn1_callback)
+        # window.set_get_pages_btn(btn2_callback)
 
     def get_window(self):
         return self._window
