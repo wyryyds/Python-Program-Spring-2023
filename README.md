@@ -5,3 +5,6 @@ UI界面使用tkinter与tkinter-Designer搭建：
 
 ![AppUI](https://pic1.imgdb.cn/item/646f521cf024cca173c3e04c.png)
 
+## Reference
+* [https://github.com/ParthJadhav/Tkinter-Designer](https://github.com/ParthJadhav/Tkinter-Designer)
+
