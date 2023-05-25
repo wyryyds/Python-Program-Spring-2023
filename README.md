@@ -11,7 +11,7 @@
 ![AppUI](https://pic1.imgdb.cn/item/646f521cf024cca173c3e04c.png)
 
 ## How To Use
-如果你已经配置过python环境，你可以直接执行* entry_point.py *来查看项目  
+如果你已经配置过python环境，你可以直接执行' entry_point.py '来查看项目  
 
 更简单的，你可以直接执行App文件夹下的exe文件来运行项目
 
