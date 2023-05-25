@@ -10,6 +10,11 @@
 
 ![AppUI](https://pic1.imgdb.cn/item/646f521cf024cca173c3e04c.png)
 
+## How To Use
+如果你已经配置过python环境，你可以直接执行entry_Point.py来查看项目  
+
+更简单的，你可以直接执行App文件夹下的exe文件来运行项目
+
 ## Reference
 * [https://github.com/ParthJadhav/Tkinter-Designer](https://github.com/ParthJadhav/Tkinter-Designer)
 
