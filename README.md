@@ -3,7 +3,7 @@
 
 ## Function
 * Word文档转PDF文档
-* 统计改Word文档的页码
+* 统计文档的页码
 * 快速获取文档总目录
 
 ### UI界面使用tkinter与tkinter-Designer搭建：  
