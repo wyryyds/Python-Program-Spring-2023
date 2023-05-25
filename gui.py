@@ -1,15 +1,16 @@
 from pathlib import Path
-
-# from tkinter import *
-# Explicit imports to satisfy Flake8
+import sys
 from tkinter import Tk, Canvas, Entry, Button, PhotoImage, Toplevel, Label, Scrollbar, Frame
-
-OUTPUT_PATH = Path(__file__).parent
-ASSETS_PATH = OUTPUT_PATH / Path(r"C:\Python Projects\Python-final-project\assets\frame0")
 
 
 def relative_to_assets(path: str) -> Path:
-    return ASSETS_PATH / Path(path)
+    if getattr(sys, 'frozen', False):
+        # 打包时路径
+        bundle_dir = getattr(sys, '_MEIPASS', Path(__file__).resolve().parent)
+        return Path(bundle_dir) / 'assets/frame0' / path
+    else:
+        # 开发时路径
+        return Path(__file__).resolve().parent / 'assets/frame0' / path
 
 
 class Gui:
