@@ -2,7 +2,7 @@ from pathlib import Path
 
 # from tkinter import *
 # Explicit imports to satisfy Flake8
-from tkinter import Tk, Canvas, Entry, Button, PhotoImage, Toplevel, Label
+from tkinter import Tk, Canvas, Entry, Button, PhotoImage, Toplevel, Label, Scrollbar, Frame
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path(r"C:\Python Projects\Python-final-project\assets\frame0")
@@ -171,3 +171,50 @@ class Gui:
         top.geometry('400x200')
         label = Label(top, text=info)
         label.pack()
+
+    def new_top_level_for_list(self, title, info_list):
+        top = Toplevel(self.window)
+        top.title(title)
+        top.geometry('400x600')
+
+        # 创建滚动条
+        scrollbar = Scrollbar(top)
+        scrollbar.pack(side='right', fill='y')
+
+        # 创建帧
+        frame = Frame(top, width=400)
+        frame.pack(fill='both', expand=True)
+
+        # 创建画布
+        canvas = Canvas(frame, yscrollcommand=scrollbar.set)
+        canvas.pack(side='left', fill='both', expand=True)
+
+        # 设置滚动条与画布的关联
+        scrollbar.config(command=canvas.yview)
+
+        # 创建内部帧，用于放置标签
+        inner_frame = Frame(canvas)
+        canvas.create_window((0, 0), window=inner_frame, anchor='nw')
+
+        # 添加标签到内部帧
+        for t in info_list:
+            label = Label(inner_frame, text=t)
+            label.pack()
+
+        # 更新画布的大小以确保能显示所有内容
+        canvas.update_idletasks()
+        canvas.config(scrollregion=canvas.bbox('all'))
+
+        # 根据内容的长度调整窗口的宽度
+        label_width = max(label.winfo_reqwidth() for label in inner_frame.winfo_children())
+        window_width = label_width + scrollbar.winfo_width() + 200  # 加上滚动条宽度和一些边距
+        top.geometry(f'{window_width}x600')
+
+        # 配置画布的滚动条和大小调整
+        canvas.config(width=label_width, height=600)
+        canvas.config(scrollregion=canvas.bbox('all'))
+
+        def on_mousewheel(event):
+            canvas.yview_scroll(-int(event.delta / 120), 'units')
+
+        canvas.bind_all('<MouseWheel>', on_mousewheel)

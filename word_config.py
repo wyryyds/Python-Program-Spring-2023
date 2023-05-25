@@ -46,3 +46,16 @@ class WordConfig:
             return count
         except Exception as e:
             print("Error:", e)
+
+    def get_word_table(self):
+        word = self._word
+        doc = word.Documents.Open(os.path.abspath(self._word_file_path))
+        table_of_contents = doc.TablesOfContents
+        if table_of_contents.Count > 0:
+            toc = table_of_contents(1)
+            info_list = []
+            for entry in toc.Range.Paragraphs:
+                info_list.append(entry.Range.Text.strip())
+            return info_list
+        else:
+            return None
