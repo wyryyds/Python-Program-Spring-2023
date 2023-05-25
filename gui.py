@@ -52,7 +52,7 @@ class Gui:
             image=self.get_pages_btn_image,
             borderwidth=0,
             highlightthickness=0,
-            command=self.init_btn,
+            command=self.init_func_btn,
             relief="flat"
         )
         self.get_pages_btn.place(
@@ -68,7 +68,7 @@ class Gui:
             image=self.word_2_pdf_btn_image,
             borderwidth=0,
             highlightthickness=0,
-            command=self.init_btn,
+            command=self.init_func_btn,
             relief="flat"
         )
         self.word_2_pdf_btn.place(
@@ -84,7 +84,7 @@ class Gui:
             image=self.directory_btn_img,
             borderwidth=0,
             highlightthickness=0,
-            command=self.init_btn,
+            command=self.init_func_btn,
             relief="flat"
         )
         self.directory_btn.place(
@@ -150,8 +150,8 @@ class Gui:
     def run(self):
         self.window.mainloop()
 
-    def init_btn(self):
-        self.new_top_level('请先选择一个文档')
+    def init_func_btn(self):
+        print('btn click')
 
     def set_load_file_btn(self, func):
         self.load_file_btn.bind('<Button-1>', lambda event: func())

@@ -11,22 +11,23 @@ class Application:
     def window_bind_func(self):
         window = self._window
         word_config = self._word_config
-        path = word_config.get_word_file_path()
-        input_path = path + 'input.docx'
-        output_path = path + 'output.pdf'
 
         def btn1_callback(event):
-            print(word_config.get_word_file_path())
-            word_config.word_2_pdf()
-            window.new_top_level('转换成功')
+            if word_config.word_is_open:
+                window.new_top_level('转换成功') if word_config.word_2_pdf() else window.new_top_level('操作取消')
+            else:
+                window.new_top_level('请先选择一个文档')
 
         def btn2_callback(event):
-            count = word_config.get_word_pages_count()
-            window.new_top_level('该word文档的页数为：{}'.format(count))
-        # 初始化 word 2 pdf 功能的按钮
+            if word_config.word_is_open:
+                count = word_config.get_word_pages_count()
+                window.new_top_level('该word文档的页数为：{}'.format(count))
+            else:
+                window.new_top_level('请先选择一个文档')
+
+        window.set_load_file_btn(word_config.open_file)
         window.set_word_2_pdf_btn(btn1_callback)
         window.set_get_pages_btn(btn2_callback)
-        window.set_load_file_btn(word_config.open_file)
 
     def get_window(self):
         return self._window
