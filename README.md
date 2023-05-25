@@ -6,7 +6,7 @@
 * 统计改Word文档的页码
 * 快速获取文档总目录
 
-UI界面使用tkinter与tkinter-Designer搭建：  
+###UI界面使用tkinter与tkinter-Designer搭建：  
 
 ![AppUI](https://pic1.imgdb.cn/item/646f521cf024cca173c3e04c.png)
 
