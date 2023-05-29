@@ -30,7 +30,6 @@ class WordConfig:
         if output_file:
             word = self._word
             word.Visible = False
-            # 打开输入的 Word 文档
             doc = word.Documents.Open(os.path.abspath(self._word_file_path))
             # 将 Word 文档保存为 PDF
             doc.SaveAs(os.path.abspath(output_file), FileFormat=17)
