@@ -1,5 +1,5 @@
 # 使用Python制作的简单Word工具
-基于pywin32与tkinter制作的一个简单Word工具，同时也是个人Python课程的期末大作业。  
+基于pywin32与tkinter制作的一个简单Word工具，同时也是个人Python课程的期末大作业，项目使用MVC模式进行设计。  
 
 ## Function
 * Word文档转PDF文档
